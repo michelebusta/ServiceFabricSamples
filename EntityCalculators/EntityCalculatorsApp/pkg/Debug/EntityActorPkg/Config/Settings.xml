@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <Section Name="EntityActorServiceReplicatorConfig">
+      <Parameter Name="ReplicatorEndpoint" Value="EntityActorServiceReplicatorEndpoint" />
+      <Parameter Name="BatchAcknowledgementInterval" Value="0.005" />
+   </Section>
+   <Section Name="EntityActorServiceReplicatorSecurityConfig">
+      <Parameter Name="CredentialType" Value="None" />
+   </Section>
+   <Section Name="ServiceRunTimeConfig">
+      <Parameter Name="InstrumentationKey" Value="" />
+      <Parameter Name="OltpConnector" Value="" />
+      <Parameter Name="OltpConnectionString" Value="" />
+      <Parameter Name="LogsStorageConnectionString" Value="" />
+      <Parameter Name="LogsStorageTableName" Value="" />
+      <Parameter Name="IsEtwLogging" Value="" />
+      <Parameter Name="IsAzureTableStorageLogging" Value="" />
+   </Section>
+</Settings>

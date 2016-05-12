@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="EntityCalculatorsAppType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <Parameters>
+      <Parameter Name="EnqueuerService_MinReplicaSetSize" DefaultValue="2" />
+      <Parameter Name="EnqueuerService_PartitionCount" DefaultValue="1" />
+      <Parameter Name="EnqueuerService_TargetReplicaSetSize" DefaultValue="3" />
+      <Parameter Name="ApiGateway_InstanceCount" DefaultValue="-1" />
+      <Parameter Name="EntityActorService_PartitionCount" DefaultValue="10" />
+      <Parameter Name="EntityActorService_MinReplicaSetSize" DefaultValue="2" />
+      <Parameter Name="EntityActorService_TargetReplicaSetSize" DefaultValue="3" />
+      <Parameter Name="InstrumentationKey" DefaultValue="" />
+      <Parameter Name="OltpConnector" DefaultValue="" />
+      <Parameter Name="OltpConnectionString" DefaultValue="" />
+      <Parameter Name="LogsStorageConnectionString" DefaultValue="" />
+      <Parameter Name="LogsStorageTableName" DefaultValue="" />
+      <Parameter Name="IsEtwLogging" DefaultValue="" />
+      <Parameter Name="IsAzureTableStorageLogging" DefaultValue="" />
+   </Parameters>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="EntityActorPkg" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides>
+         <ConfigOverride Name="Config">
+            <Settings>
+               <Section Name="ServiceRunTimeConfig">
+                  <Parameter Name="InstrumentationKey" Value="[InstrumentationKey]" />
+                  <Parameter Name="OltpConnector" Value="[OltpConnector]" />
+                  <Parameter Name="OltpConnectionString" Value="[OltpConnectionString]" />
+                  <Parameter Name="LogsStorageConnectionString" Value="[LogsStorageConnectionString]" />
+                  <Parameter Name="LogsStorageTableName" Value="[LogsStorageTableName]" />
+                  <Parameter Name="IsEtwLogging" Value="[IsEtwLogging]" />
+                  <Parameter Name="IsAzureTableStorageLogging" Value="[IsAzureTableStorageLogging]" />
+               </Section>
+            </Settings>
+         </ConfigOverride>
+      </ConfigOverrides>
+   </ServiceManifestImport>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="EnqueuerServicePkg" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides>
+         <ConfigOverride Name="Config">
+            <Settings>
+               <Section Name="ServiceRunTimeConfig">
+                  <Parameter Name="InstrumentationKey" Value="[InstrumentationKey]" />
+                  <Parameter Name="OltpConnector" Value="[OltpConnector]" />
+                  <Parameter Name="OltpConnectionString" Value="[OltpConnectionString]" />
+                  <Parameter Name="LogsStorageConnectionString" Value="[LogsStorageConnectionString]" />
+                  <Parameter Name="LogsStorageTableName" Value="[LogsStorageTableName]" />
+                  <Parameter Name="IsEtwLogging" Value="[IsEtwLogging]" />
+                  <Parameter Name="IsAzureTableStorageLogging" Value="[IsAzureTableStorageLogging]" />
+               </Section>
+            </Settings>
+         </ConfigOverride>
+      </ConfigOverrides>
+   </ServiceManifestImport>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="ApiGatewayPkg" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides>
+         <ConfigOverride Name="Config">
+            <Settings>
+               <Section Name="ServiceRunTimeConfig">
+                  <Parameter Name="InstrumentationKey" Value="[InstrumentationKey]" />
+                  <Parameter Name="OltpConnector" Value="[OltpConnector]" />
+                  <Parameter Name="OltpConnectionString" Value="[OltpConnectionString]" />
+                  <Parameter Name="LogsStorageConnectionString" Value="[LogsStorageConnectionString]" />
+                  <Parameter Name="LogsStorageTableName" Value="[LogsStorageTableName]" />
+                  <Parameter Name="IsEtwLogging" Value="[IsEtwLogging]" />
+                  <Parameter Name="IsAzureTableStorageLogging" Value="[IsAzureTableStorageLogging]" />
+               </Section>
+            </Settings>
+         </ConfigOverride>
+      </ConfigOverrides>
+   </ServiceManifestImport>
+   <DefaultServices>
+      <Service Name="EnqueuerService">
+         <StatefulService ServiceTypeName="EnqueuerServiceType" TargetReplicaSetSize="[EnqueuerService_TargetReplicaSetSize]" MinReplicaSetSize="[EnqueuerService_MinReplicaSetSize]">
+            <UniformInt64Partition PartitionCount="[EnqueuerService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+         </StatefulService>
+      </Service>
+      <Service Name="ApiGateway">
+         <StatelessService ServiceTypeName="ApiGatewayType" InstanceCount="[ApiGateway_InstanceCount]">
+            <SingletonPartition />
+         </StatelessService>
+      </Service>
+      <Service Name="EntityActorService" GeneratedIdRef="2aae915c-efe9-4f5d-a7db-2c22541fb7e8|Persisted">
+         <StatefulService ServiceTypeName="EntityActorServiceType" TargetReplicaSetSize="[EntityActorService_TargetReplicaSetSize]" MinReplicaSetSize="[EntityActorService_MinReplicaSetSize]">
+            <UniformInt64Partition PartitionCount="[EntityActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+         </StatefulService>
+      </Service>
+   </DefaultServices>
+</ApplicationManifest>

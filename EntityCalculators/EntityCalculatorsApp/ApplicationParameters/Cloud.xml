@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/EntityCalculatorsApp" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <Parameters>
+      <Parameter Name="EnqueuerService_PartitionCount" Value="1" />
+      <Parameter Name="EnqueuerService_MinReplicaSetSize" Value="2" />
+      <Parameter Name="EnqueuerService_TargetReplicaSetSize" Value="3" />
+      <Parameter Name="ApiGateway_InstanceCount" Value="-1" />
+      <Parameter Name="InstrumentationKey" Value="" />
+      <Parameter Name="OltpConnector" Value="Fake" />
+      <Parameter Name="OltpConnectionString" Value="cloud-connection" />
+      <Parameter Name="LogsStorageConnectionString" Value="DefaultEndpointsProtocol=https;AccountName=yanglesfabricecalcs;AccountKey=uCZHazLquq6i5tinGtdeQ00zG7a6ajDHknhrH+Wib9zqEgzAbqwd6yCM580DlU6xLBhfiscONtJWSEjWhh2lEg==" />
+      <Parameter Name="LogsStorageTableName" Value="prodlogs" />
+      <Parameter Name="IsEtwLogging" Value="true" />
+      <Parameter Name="IsAzureTableStorageLogging" Value="true" />
+   </Parameters>
+</Application>

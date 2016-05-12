@@ -1,0 +1,2 @@
+C:\ServiceFabricDemos\samples\EntityCalculators\EntityCalculatorsApp\obj\x64\Debug\EntityCalculatorsApp.sfprojResolveAssemblyReference.cache
+C:\michelebusta\ServiceFabric\EntityCalculators\EntityCalculatorsApp\obj\x64\Debug\EntityCalculatorsApp.sfprojResolveAssemblyReference.cache
